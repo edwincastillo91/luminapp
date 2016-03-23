@@ -1,0 +1,1 @@
+json.extract! @character, :id, :first_name, :last_name, :drive, :wound, :eyes_color, :hair_color, :height, :weight, :race, :sex, :genetic_modification, :social_class, :sexual_orientation, :genre, :created_at, :updated_at

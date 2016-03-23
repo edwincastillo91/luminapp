@@ -1,0 +1,24 @@
+<%= simple_form_for(@character) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :drive %>
+    <%= f.input :wound %>
+    <%= f.input :eyes_color %>
+    <%= f.input :hair_color %>
+    <%= f.input :height %>
+    <%= f.input :weight %>
+    <%= f.input :race %>
+    <%= f.input :sex %>
+    <%= f.input :genetic_modification %>
+    <%= f.input :social_class %>
+    <%= f.input :sexual_orientation %>
+    <%= f.input :genre %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
