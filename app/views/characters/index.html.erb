@@ -1,29 +1,33 @@
-<h1>Listing characters</h1>
-
-<table>
+<%- model_class = Character -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Character %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Drive</th>
-      <th>Wound</th>
-      <th>Eyes color</th>
-      <th>Hair color</th>
-      <th>Height</th>
-      <th>Weight</th>
-      <th>Race</th>
-      <th>Sex</th>
-      <th>Genetic modification</th>
-      <th>Social class</th>
-      <th>Sexual orientation</th>
-      <th>Genre</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:first_name) %></th>
+      <th><%= model_class.human_attribute_name(:last_name) %></th>
+      <th><%= model_class.human_attribute_name(:drive) %></th>
+      <th><%= model_class.human_attribute_name(:wound) %></th>
+      <th><%= model_class.human_attribute_name(:eyes_color) %></th>
+      <th><%= model_class.human_attribute_name(:hair_color) %></th>
+      <th><%= model_class.human_attribute_name(:height) %></th>
+      <th><%= model_class.human_attribute_name(:weight) %></th>
+      <th><%= model_class.human_attribute_name(:race) %></th>
+      <th><%= model_class.human_attribute_name(:sex) %></th>
+      <th><%= model_class.human_attribute_name(:genetic_modification) %></th>
+      <th><%= model_class.human_attribute_name(:social_class) %></th>
+      <th><%= model_class.human_attribute_name(:sexual_orientation) %></th>
+      <th><%= model_class.human_attribute_name(:genre) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @characters.each do |character| %>
       <tr>
+        <td><%= character.id %></td>
         <td><%= character.first_name %></td>
         <td><%= character.last_name %></td>
         <td><%= character.drive %></td>
@@ -38,14 +42,21 @@
         <td><%= character.social_class %></td>
         <td><%= character.sexual_orientation %></td>
         <td><%= character.genre %></td>
-        <td><%= link_to 'Show', character %></td>
-        <td><%= link_to 'Edit', edit_character_path(character) %></td>
-        <td><%= link_to 'Destroy', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l character.created_at, format: :long %></td>
+        <td>
+          <%= link_to character_path(character), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to character_path(character), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Character', new_character_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_character_path,
+            :class => 'btn btn-primary' %>

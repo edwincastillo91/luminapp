@@ -1,74 +1,50 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Character -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Character %></h1>
+</div>
 
-<p>
-  <strong>First name:</strong>
-  <%= @character.first_name %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:first_name) %></dt>
+      <dd><pre class="prettyprint"><%= @character.first_name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:last_name) %></dt>
+      <dd><pre class="prettyprint"><%= @character.last_name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:drive) %></dt>
+      <dd><pre class="prettyprint"><%= @character.drive %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:wound) %></dt>
+      <dd><pre class="prettyprint"><%= @character.wound %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:eyes_color) %></dt>
+      <dd><pre class="prettyprint"><%= @character.eyes_color %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:hair_color) %></dt>
+      <dd><pre class="prettyprint"><%= @character.hair_color %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:height) %></dt>
+      <dd><pre class="prettyprint"><%= @character.height %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:weight) %></dt>
+      <dd><pre class="prettyprint"><%= @character.weight %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:race) %></dt>
+      <dd><pre class="prettyprint"><%= @character.race %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:sex) %></dt>
+      <dd><pre class="prettyprint"><%= @character.sex %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:genetic_modification) %></dt>
+      <dd><pre class="prettyprint"><%= @character.genetic_modification %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:social_class) %></dt>
+      <dd><pre class="prettyprint"><%= @character.social_class %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:sexual_orientation) %></dt>
+      <dd><pre class="prettyprint"><%= @character.sexual_orientation %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:genre) %></dt>
+      <dd><pre class="prettyprint"><%= @character.genre %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @character.last_name %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              characters_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_character_path(@character), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              character_path(@character),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Drive:</strong>
-  <%= @character.drive %>
-</p>
-
-<p>
-  <strong>Wound:</strong>
-  <%= @character.wound %>
-</p>
-
-<p>
-  <strong>Eyes color:</strong>
-  <%= @character.eyes_color %>
-</p>
-
-<p>
-  <strong>Hair color:</strong>
-  <%= @character.hair_color %>
-</p>
-
-<p>
-  <strong>Height:</strong>
-  <%= @character.height %>
-</p>
-
-<p>
-  <strong>Weight:</strong>
-  <%= @character.weight %>
-</p>
-
-<p>
-  <strong>Race:</strong>
-  <%= @character.race %>
-</p>
-
-<p>
-  <strong>Sex:</strong>
-  <%= @character.sex %>
-</p>
-
-<p>
-  <strong>Genetic modification:</strong>
-  <%= @character.genetic_modification %>
-</p>
-
-<p>
-  <strong>Social class:</strong>
-  <%= @character.social_class %>
-</p>
-
-<p>
-  <strong>Sexual orientation:</strong>
-  <%= @character.sexual_orientation %>
-</p>
-
-<p>
-  <strong>Genre:</strong>
-  <%= @character.genre %>
-</p>
-
-<%= link_to 'Edit', edit_character_path(@character) %> |
-<%= link_to 'Back', characters_path %>

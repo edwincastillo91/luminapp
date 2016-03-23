@@ -1,24 +1,94 @@
-<%= simple_form_for(@character) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :drive %>
-    <%= f.input :wound %>
-    <%= f.input :eyes_color %>
-    <%= f.input :hair_color %>
-    <%= f.input :height %>
-    <%= f.input :weight %>
-    <%= f.input :race %>
-    <%= f.input :sex %>
-    <%= f.input :genetic_modification %>
-    <%= f.input :social_class %>
-    <%= f.input :sexual_orientation %>
-    <%= f.input :genre %>
+<%= form_for @character, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :first_name, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :first_name, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :last_name, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :last_name, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :drive, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :drive, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :wound, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :wound, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :eyes_color, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :eyes_color, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :hair_color, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :hair_color, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :height, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.number_field :height, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :weight, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.number_field :weight, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :race, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :race, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :sex, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :sex, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :genetic_modification, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.check_box :genetic_modification, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :social_class, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :social_class, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :sexual_orientation, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :sexual_orientation, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :genre, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :genre, :class => 'text-field form-control' %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  characters_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>
