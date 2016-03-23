@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :societies
+
   resources :artefacts
 
   resources :scenes
