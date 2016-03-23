@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :scenes
+
   resources :stories
 
   resources :comments
