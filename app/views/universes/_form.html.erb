@@ -1,0 +1,29 @@
+<%= simple_form_for(@univers) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+ <div class="form-group">
+    <%= f.label :name, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :name, :class => 'text-field form-control' %>
+    </div>
+	 
+	 <div class="form-group">
+    <%= f.label :primary, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+		
+		<%= f.input :primary, as: :boolean %>
+    </div>
+	 
+  </div>
+
+  
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+

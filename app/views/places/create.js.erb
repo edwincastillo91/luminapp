@@ -1,0 +1,3 @@
+$('#new_place_form').remove();
+$('#new_place_link').show();
+$('#place-grid').prepend('<%= j render(@place)%>').isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });

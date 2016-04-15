@@ -1,10 +1,41 @@
-<%= form_for @place, :html => { :class => 'form-horizontal form-model' } do |f| %>
+<%= form_for [@univers,@place], :html => { :class => 'form-horizontal form-model', id: 'new_place_form' }, remote: true do |f| %>
+
+
+
   <div class="form-group">
     <%= f.label :name, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
       <%= f.text_field :name, :class => 'text-field form-control' %>
     </div>
   </div>
+
+
+ 
+
+ <div class="field">
+    <%= f.label :city %>
+
+	 <%= select(:place, :city, @cities,{}, {class: "select2", style:"width: 50%"}) %>
+	 
+  </div>  
+
+<%= @top_countries%>
+
+
+<div class="field">
+    <%= f.label :country %>
+	<%= country_select(:place, :country, {priority_countries:  @top_countries.reverse},  {class: "select2"}) %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :subdivision, "State / Province" %>
+	  <%= f.subdivision_select :subdivision, :country,  {prompt: 'Please select a country..'}, {class: "select2"}  %>
+  </div>
+
+
+
+
   <div class="form-group">
     <%= f.label :latitude, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
@@ -22,7 +53,7 @@
     <div class='col-md-offset-2 col-md-10'>
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  places_path, :class => 'btn btn-default' %>
+univers_places_path, :class => 'btn btn-default' %>
     </div>
   </div>
 <% end %>

@@ -1,0 +1,86 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Edit', edit_univers_path(@univers) %> |
+<%= link_to 'Back', universes_path %>
+
+<div class="row">
+	<div class="col-md-12">
+	  <ul class="nav nav-pills">
+		  <li role="presentation"> 
+			  <h1><%= @univers.name%></h1>
+		  </li>
+		  
+	  </ul>
+	  
+	  
+	  
+  </div>
+	
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+		<%= link_to "New Story", new_univers_story_path(@univers.id)%> | 
+		<%= link_to "Stories", univers_stories_path(@univers.id)%>
+		
+		<ul>
+		
+		<% @univers.stories.each do |story| %>
+			<li>
+			<%= story.name%>
+			</li>
+		<%end%>
+			
+		</ul>
+		
+	</div>
+	
+	<div class="col-md-4">
+		
+		<%= link_to "New Character", new_univers_character_path(@univers.id) %> | 
+		<%= link_to "All Characters", univers_characters_path(@univers.id) %>
+		
+		<% @univers.characters.each do |char| %>
+			<li>
+				<%= link_to char.first_name, univers_character_path(char.univers_id, char.id)%>
+			</li>
+		<%end%>
+		
+	</div>
+	
+	<div class="col-md-4">
+		<%= link_to "New Event", new_univers_event_path(@univers.id) %> | 
+		<%= link_to "All Events", univers_events_path(@univers.id) %>
+		
+		<% @univers.events.each do |event| %>
+			<li>
+				<%= link_to event.name, univers_event_path(@univers.id, event.id)%>
+			</li>
+		<%end%>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+		<%= link_to "New Place", new_univers_place_path(@univers.id) %> | 
+		<%= link_to "All Places", univers_places_path(@univers.id) %>
+		
+		<% @univers.places.each do |place| %>
+			<li>
+				<%= link_to place.name, univers_place_path(@univers.id, place.id)%>
+			</li>
+		<%end%>
+	
+		
+	</div>
+	
+	<div class="col-md-4">
+		
+
+		
+	</div>
+	
+	<div class="col-md-4">
+	
+	</div>
+</div>

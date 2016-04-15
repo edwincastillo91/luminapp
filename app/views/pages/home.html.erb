@@ -1,0 +1,10 @@
+<% if user_signed_in?%>
+
+Dashboard
+<% if @primary.present? %>
+
+<h1><%=  @primary.name %></h1>
+	<%else%>
+	<h1>"chose a univers"</h1>
+<%end%>
+<%end%>

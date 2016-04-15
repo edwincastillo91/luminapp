@@ -1,7 +1,9 @@
 <%- model_class = Story -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => Story %></h1>
+  <h1><%= link_to @univers.name,univers_path(@univers.id) %>'s Stories</h1>
 </div>
+
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -17,14 +19,7 @@
         <td><%= story.id %></td>
         <td><%= story.name %></td>
         <td><%=l story.created_at, format: :long %></td>
-        <td>
-          <%= link_to story_path(story), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-            <%= glyph 'info-sign' %>
-            <%= glyph 'pencil' %>
-          <%- end -%>
-          <%= link_to story_path(story), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
-            <%= glyph 'remove' %>
-          <%- end -%>
+		  <td> <%= link_to "edit", edit_univers_story_path(@univers.id, story.id) %>
         </td>
       </tr>
     <% end %>
@@ -32,5 +27,5 @@
 </table>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_story_path,
+	new_univers_story_path,
             :class => 'btn btn-primary' %>

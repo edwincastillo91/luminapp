@@ -1,16 +1,41 @@
-<%= form_for @event, :html => { :class => 'form-horizontal form-model' } do |f| %>
-  <div class="form-group">
-    <%= f.label :name, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_field :name, :class => 'text-field form-control' %>
-    </div>
+<%= form_for [@univers, @event] do |f| %>
+  
+
+
+
+<div class="field">
+	<%= f.label :place %><br />
+	<%= collection_select(:event, :place_id, @places, :id, :place_city_country, {prompt: 'Where was it?'}, {multiple: false, class: 'select2'}) %>
   </div>
+
+<div class="field">
+	<%= f.label :day %><br />
+	<%= collection_select(:event, :day_id, @dates, :id, :human_day, {prompt: 'When was it?'}, {multiple: false, class: "select2"}) %> 
+  </div>
+
+
+
+
+
+<div class="field">
+	<%= f.label :name %><br />
+	<%= f.text_field :name %><br />
+</div>
+
+
 
   <div class="form-group">
     <div class='col-md-offset-2 col-md-10'>
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  events_path, :class => 'btn btn-default' %>
+univers_stories_path, :class => 'btn btn-default' %>
     </div>
   </div>
+
+
 <% end %>
+
+
+
+
+

@@ -1,0 +1,95 @@
+
+
+<div class="row">
+  <div class="col-md-3">
+	  <ul class="nav nav-pills">
+		  <li role="presentation"> 
+			  <h1>My Univers</h1>
+		  </li>
+		  
+	  </ul>
+	  
+	  
+	  
+  </div>
+	
+	<div class="col-md-9">
+		<ul class="nav nav-pills">
+		<li  class="add_box">
+			  
+			  <%= link_to ' add a univers', new_univers_path %>
+		  
+		  </li>
+			<li  class="add_box">
+			  
+				<%= link_to ' destroy a univers', new_univers_path %>
+		  
+		  </li>
+			<li  class="add_box">
+			  
+				<%= link_to ' Merge universes', new_univers_path %>
+		  
+		  </li>
+			
+		</ul>
+	
+	</div>
+	
+  </div>
+
+<div class="row">
+  <div class="col-md-3">sidebar</div>
+  <div class="col-md-9">
+
+  <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
+
+	  
+	  <% if defined?(Devise) %>
+        <% if user_signed_in? %>
+	  <% if @universes.count == 0%>
+	  
+	  <div class="black_circle">You Have 0 universes </div>
+	  
+	  <%else%>
+  <% @universes.each do |univers| %>
+	  
+	  
+	  <%= link_to univers_path(univers.id) do %>
+	  	<div class="box col5 clickable" id="<%=univers.id%>">
+			<div class="upper-panel">
+				<b> <%= univers.name %> </b>
+				 <% if univers.primary? %>
+	  				<b>	| PRIMARY </b>
+					<%end%>
+			</div>
+			<div class="mid-panel"> 
+				Stories: <%= univers.stories.count %>
+				Characters: <%= univers.characters.count%>
+				Events: <%= univers.events.count%>
+				Comment: z 
+			</div>
+			<div class="lower-panel"> 
+				<%= link_to 'Show', univers %>
+				<%= link_to 'Edit', edit_univers_path(univers) %>
+				<%= link_to 'Destroy', univers, method: :delete, data: { confirm: 'Are you sure?' } %>
+			</div>
+	  </div>
+	  <% end %>
+
+  <% end %>
+	  <% end %>
+	  <% else %>
+	  	<%= link_to "Login", new_user_session_path %>
+		<%= link_to "Sign Up", new_user_registration_path %>
+        <% end %>
+	  <% end %>
+
+  </div>
+    
+
+
+
+
+  </div>
+</div>
+

@@ -1,20 +1,40 @@
 Rails.application.routes.draw do
-  resources :events
 
-  resources :characters
 
-  resources :societies
+  
+	root "pages#home"
+  	resources :pages
+	
+	resources :users
+	
+		resources :universes do
+			resources :stories
+			resources :days
+			resources :events do
+				get 'place', on: :member
+				resources :places
+				end
+			resources :chapters
+			resources :scenes
+			resources :societies
+			resources :characters
+			resources :artefacts
+			resources :places do
+				resources :events 
+				get 'event', on: :member
+				end
+			resources :comments
+		end
+	
 
-  resources :artefacts
+	
 
-  resources :scenes
+	
+	mount SubdivisionSelect::Engine, at: 'subdivisions'
+	
+	
 
-  resources :stories
-
-  resources :comments
-
-  resources :places
-
+  
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions", passwords: "users/passwords"}, skip: [:sessions, :registrations]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -40,7 +60,7 @@ Rails.application.routes.draw do
   #
   #     collection do
   #       get 'sold'
-  #     end
+  #     endunivers_stories_path
   #   end
 
   # Example resource route with sub-resources:

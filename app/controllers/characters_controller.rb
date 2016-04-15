@@ -1,10 +1,17 @@
 class CharactersController < ApplicationController
-  before_action :set_character, only: [:show, :edit, :update, :destroy]
+   before_action :require_user_signed_in, only: [:index,:show, :create, :destroy]
+	before_action :set_character, only: [:show, :edit, :update, :destroy]
+	before_action :set_univers
+	before_action :correct_user
 
+	
+	
+	
+ respond_to :html, :xml, :json
   # GET /characters
   # GET /characters.json
   def index
-    @characters = Character.all
+	  @characters = @univers.characters
   end
 
   # GET /characters/1
@@ -14,7 +21,8 @@ class CharactersController < ApplicationController
 
   # GET /characters/new
   def new
-    @character = Character.new
+	  @character = @univers.characters.build
+	  respond_with(@chapter) #??
   end
 
   # GET /characters/1/edit
@@ -24,11 +32,12 @@ class CharactersController < ApplicationController
   # POST /characters
   # POST /characters.json
   def create
-    @character = Character.new(character_params)
+	  @character = @univers.characters.build(character_params)
+	  
 
     respond_to do |format|
       if @character.save
-        format.html { redirect_to @character, notice: 'Character was successfully created.' }
+		  format.html { redirect_to univers_characters_path, notice: 'Character was successfully created.' }
         format.json { render :show, status: :created, location: @character }
       else
         format.html { render :new }
@@ -42,7 +51,7 @@ class CharactersController < ApplicationController
   def update
     respond_to do |format|
       if @character.update(character_params)
-        format.html { redirect_to @character, notice: 'Character was successfully updated.' }
+		  format.html { redirect_to univers_characters_path, notice: 'Character was successfully updated.' }
         format.json { render :show, status: :ok, location: @character }
       else
         format.html { render :edit }
@@ -71,4 +80,28 @@ class CharactersController < ApplicationController
     def character_params
       params.require(:character).permit(:first_name, :last_name, :drive, :wound, :eyes_color, :hair_color, :height, :weight, :race, :sex, :genetic_modification, :social_class, :sexual_orientation, :genre)
     end
+	
+	
+	def set_univers
+		@univers = Univers.find(params[:univers_id])
+    end
+	
+	# Confirms a logged-in user.
+    def logged_in_user
+      unless logged_in?
+        flash[:danger] = "Please log in."
+        redirect_to root_path
+      end
+    end
+	
+	
+	
+	#check if current user is the creator of the univers
+	def correct_user
+		unless current_user == @univers.user
+			flash[:danger] = "You have no power there"
+			redirect_to universes_path
+      end
+    end
+	
 end

@@ -50,9 +50,23 @@ gem 'binding_of_caller'
 gem 'tzinfo-data'
 gem 'validates_formatting_of'
 
+gem "select2-rails"
+gem 'masonry-rails'
+gem 'cancancan', '~> 1.10'
+gem 'nested_form_fields'
+gem 'i18n_country_select'
+gem "subdivision_select"
+gem "selectize-rails"
+gem 'paloma', '~> 5.0.0' 
+gem 'jquery-turbolinks' #added because didn't load javascipt on first load
+gem 'isotope-rails'
+gem 'vex_rails'
+
+
 group :development do
   gem 'better_errors'
   gem 'pry-rails'
+  gem 'railroady'
 end
 
 group :development, :test do
