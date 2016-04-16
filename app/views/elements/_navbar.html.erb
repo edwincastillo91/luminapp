@@ -34,7 +34,7 @@ link_to @univers.name.upcase , univers_path(@univers.id)%><% end%>
 				<li><%= link_to "Stories" + " (" + @univers.stories.count.to_s + ")", univers_stories_path(@univers.id) %></li>
 				<li><%= link_to "Events" + " (" + @univers.events.count.to_s + ")", univers_events_path(@univers.id) %></li>
 				<li><%= link_to "Characters" + " (" + @univers.characters.count.to_s + ")", univers_characters_path(@univers.id) %></li>
-				<li><%= link_to "Places" + " (" + @univers.places.count.to_s + ")", univers_places_path(@univers.id) %></li>
+				<li class="place_counter"><%= link_to "Places" + " (" + @univers.places.count.to_s + ")", univers_places_path(@univers.id) %></li>
 				
               
             </ul>

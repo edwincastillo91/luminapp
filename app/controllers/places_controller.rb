@@ -52,6 +52,8 @@ class PlacesController < ApplicationController
 
   # GET /places/1/edit
   def edit
+	   
+	  
   end
 
   # POST /places
@@ -78,6 +80,7 @@ class PlacesController < ApplicationController
     respond_to do |format|
       if @place.update(place_params)
 		  format.html { redirect_to univers_places_path, notice: 'Place was successfully updated.' }
+		  format.js #update.js.erb  
         format.json { render :show, status: :ok, location: @place }
       else
         format.html { render :edit }
@@ -92,6 +95,7 @@ class PlacesController < ApplicationController
     @place.destroy
     respond_to do |format|
 		format.html { redirect_to univers_places_url, notice: 'Place was successfully destroyed.' }
+		format.js #destroy.js.erb  
       format.json { head :no_content }
     end
   end

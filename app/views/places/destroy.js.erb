@@ -1,0 +1,3 @@
+var $removeItem = $( '#place_<%= @place.id%>' );
+$('.place-grid').isotope( 'remove',  $removeItem ).isotope({ sortBy: 'original-order' });
+$('.place_counter').html();

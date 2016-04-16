@@ -2,10 +2,10 @@
 
 
 
-  <div class="form-group">
+  <div class="field">
     <%= f.label :name, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.text_field :name, :class => 'text-field form-control' %>
+		<%= f.text_field :name, :class => 'text-field form-control', autofocus:true %>
     </div>
   </div>
 
@@ -15,22 +15,20 @@
  <div class="field">
     <%= f.label :city %>
 
-	 <%= select(:place, :city, @cities,{}, {class: "select2", style:"width: 50%"}) %>
+	 <%= select(:place, :city, @cities,{}, {class: "select2", style:"width: 50%", style:"width: 100%"}) %>
 	 
   </div>  
-
-<%= @top_countries%>
 
 
 <div class="field">
     <%= f.label :country %>
-	<%= country_select(:place, :country, {priority_countries:  @top_countries.reverse},  {class: "select2"}) %>
+	<%= country_select(:place, :country, {priority_countries:  @top_countries.reverse},  {class: "select2", style:"width: 100%"}) %>
   </div>
 
 
   <div class="field">
     <%= f.label :subdivision, "State / Province" %>
-	  <%= f.subdivision_select :subdivision, :country,  {prompt: 'Please select a country..'}, {class: "select2"}  %>
+	  <%= f.subdivision_select :subdivision, :country,  {prompt: 'Please select a country..'}, {class: "select2", style:"width: 100%"}  %>
   </div>
 
 
@@ -51,9 +49,10 @@
 
   <div class="form-group">
     <div class='col-md-offset-2 col-md-10'>
-      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= f.submit nil, :class => 'vex-dialog-button-primary vex-dialog-button vex-first' %>
+		
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-univers_places_path, :class => 'btn btn-default' %>
+univers_places_path, :class => 'vex-dialog-button-secondary vex-dialog-button vex-last' %>
     </div>
   </div>
 <% end %>

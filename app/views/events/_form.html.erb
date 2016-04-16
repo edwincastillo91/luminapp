@@ -10,7 +10,7 @@
 
 <div class="field">
 	<%= f.label :day %><br />
-	<%= collection_select(:event, :day_id, @dates, :id, :human_day, {prompt: 'When was it?'}, {multiple: false, class: "select2"}) %> 
+	<%= collection_select(:event, :day_id, @dates, :id, :human_day, {prompt: 'When was it?'}, {multiple: false}) %> 
   </div>
 
 

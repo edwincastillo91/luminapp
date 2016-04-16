@@ -43,19 +43,7 @@ $(document).ready ->
   
 
 
-  # bind sort button click
-  $('.sort-place-by-button-group').on 'click', 'button', ->
-    sortValue = $(this).attr('data-sort-value')
-    $grid.isotope sortBy: sortValue
-    return
-  # change is-checked class on buttons
-  $('.button-group').each (i, buttonGroup) ->
-    $buttonGroup = $(buttonGroup)
-    $buttonGroup.on 'click', 'button', ->
-      $buttonGroup.find('.is-checked').removeClass 'is-checked'
-      $(this).addClass 'is-checked'
-      return
-    return
+
   return
 
 

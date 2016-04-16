@@ -1,0 +1,3 @@
+vex.close();
+$('#place_<%=@place.id%>').replaceWith('<%= j render(@place)%>');
+$('#place-grid').isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });

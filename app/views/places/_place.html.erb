@@ -2,10 +2,10 @@
   
 		<%if place.country_name.nil?%>
 	
-		<div class="card col3 nocountry" data-category="">
+<div class="card col3 nocountry" id="<%= 'place_'+place.id.to_s%>" data-category="">
 			
 			<%else%>
-			<div class="card col3 <%= place.country_name.delete(' ')%>" data-category="">
+			<div class="card col3 <%= place.country_name.delete(' '+','+"'"+"("+")"+".")%>", id="<%= 'place_'+place.id.to_s%>" data-category="">
 			<%end%>
 			
 		<div class="top-box">
@@ -17,6 +17,7 @@
 					<%= place.events.count%>
 				<% end%>
 		</div>
+			</div>
 		<div class="middle-box">
 		in 
 			<%= unless place.city.blank?
@@ -27,21 +28,9 @@
 			
 		</div>
 	
-		<div class="bottom-box">
-			
-				<%= link_to univers_place_path(@univers.id, place), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-            <%= glyph 'info-sign' %>
-            <%= glyph 'pencil' %>
-          <%- end -%>
-			<%= link_to "remove", univers_place_path(@univers.id,place), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs' %>
-            
-          
-		
-		
-		</div>
-	
-	</div>
-	
-	
-  </div>    
+		<div class="bottom-box">		
+			<%= link_to "EDIT", edit_univers_place_path(@univers.id, place),remote: true%>
+			<%= link_to "remove", univers_place_path(@univers.id,place), :method => :delete,remote: true, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs' %>
+			</div>
+</div>
 		<% end %>
