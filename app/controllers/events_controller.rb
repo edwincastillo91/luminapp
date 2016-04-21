@@ -3,14 +3,32 @@ class EventsController < ApplicationController
 	before_action :set_event, only: [:show, :edit, :update, :destroy]
 	before_action :set_univers
 	before_action :correct_user
+	before_action :pull_countries, only: [:edit, :new]
 	
 	
-		respond_to :html, :xml, :json
+		respond_to :html, :js, :xml, :json
 
   # GET /events
   # GET /events.json
   def index
 	  @events = @univers.events
+	  
+	  #FOR SORTING
+	  @newarray = Array.new
+	  @country_name_array = Array.new
+		
+	    @events.each do |event|
+		  @newarray << event.place.country
+		  @country_name_array << event.place.country_name		
+		end
+	  
+		@top_countries =  @newarray.uniq
+		@top_countries_name = @country_name_array.uniq
+	    @super_countries = Array.new
+		
+	  
+	  
+	  
   end
 
   # GET /events/1
@@ -31,42 +49,37 @@ class EventsController < ApplicationController
 #	  @event = @place.events.build
 	  
 	  
-	  @dates = @univers.days.all
-	  @places = @univers.places.all
-	  
+	  @days = @univers.days.all
+	   
+	  @places = @univers.places.all 
 	  
 	  @event = @univers.events.build
 
 	  
-	 
-	  respond_with(@univers, @event)
   end
 
   # GET /events/1/edit
   def edit
 	  @places = @univers.places.all
-	  @dates = @univers.days.all 
+	  @days = @univers.days.all
   end
 
   # POST /events
   # POST /events.json
   def create
-	  @place = @univers.places.build
+	  
+	  
 	  @event = @univers.events.build(event_params)
-	  
-	  
+
 	  respond_to do |format|
-			if @event.save
-			
-			
-		  
+		if @event.save
 		  format.html { redirect_to univers_events_path, notice: 'Event was successfully created.' }
-				format.json { render :show, status: :created, location: [@univers, @event] }
+format.js
+			format.json { render :show, status: :created, location: [@univers, @event] }
       else
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
-			end
-      
+	 end  
     end
   end
 
@@ -136,6 +149,23 @@ class EventsController < ApplicationController
 			redirect_to universes_path
       end
     end
+	
+		def pull_countries #pull used country in specific univers
+		@newarray = Array.new
+		@cities = Array.new
+		@country_name_array = Array.new
+		places = @univers.places.all
+		places.each do |place|
+			@newarray << place.country
+			@country_name_array << place.country_name
+			@cities << place.city 
+		end
+	
+		
+		@top_countries =  @newarray.uniq
+		@top_countries_name = @country_name_array.uniq
+		@cities = @cities.compact.uniq
+	end
 	
 
 	

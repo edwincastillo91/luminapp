@@ -61,6 +61,7 @@ gem 'paloma', '~> 5.0.0'
 gem 'jquery-turbolinks' #added because didn't load javascipt on first load
 gem 'isotope-rails'
 gem 'vex_rails'
+gem "cocoon"
 
 
 group :development do

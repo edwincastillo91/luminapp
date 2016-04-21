@@ -1,9 +1,7 @@
 vex.open({
-	content: '<%= j render("form")%>',
+	content: '<%= j render(@day)%>',
 	afterOpen: function($vexContent) {
-//		$(".select2").select2({
-//			theme: "bootstrap"
-//		}), 
+
 		$('.vex-last').on('click', function(){
 			vex.close();
 		});

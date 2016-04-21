@@ -1,7 +1,6 @@
 <%= form_for [@univers,@place], :html => { :class => 'form-horizontal form-model', id: 'new_place_form' }, remote: true do |f| %>
 
 
-
   <div class="field">
     <%= f.label :name, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
@@ -51,8 +50,8 @@
     <div class='col-md-offset-2 col-md-10'>
       <%= f.submit nil, :class => 'vex-dialog-button-primary vex-dialog-button vex-first' %>
 		
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-univers_places_path, :class => 'vex-dialog-button-secondary vex-dialog-button vex-last' %>
+		<%= link_to 'cancel', '#', :class => 'vex-dialog-button-secondary vex-dialog-button vex-last' %>
     </div>
   </div>
+
 <% end %>

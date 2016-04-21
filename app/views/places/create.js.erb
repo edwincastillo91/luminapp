@@ -1,3 +1,5 @@
 vex.close();
+alert("I am an alert box!");
 $('#place-grid').prepend('<%= j render(@place)%>').isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
-
+//$('#placefield').html('<%= j render partial: "events/place_fields", object: @places %>');
+$('#place_field').html('<%= j collection_select(:event, :place_id, @places, :id, :name, {selected: @places.last}, {multiple: false, class: "select_place", id: "place_field"}) %>').trigger('change');

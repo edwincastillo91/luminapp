@@ -1,0 +1,2 @@
+vex.close();
+$('#day_field').html('<%= j collection_select(:event, :day_id, @days, :id, :human_day, {selected: @days.last}, {multiple: false, class: "select_day", id: "day_field"}) %>').trigger('change');

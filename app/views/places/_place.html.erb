@@ -1,4 +1,4 @@
-<%= link_to univers_place_path(@univers, place.id) do %>
+<%= link_to univers_place_path(@univers, place.id), remote: true do %>
   
 		<%if place.country_name.nil?%>
 	

@@ -1,12 +1,12 @@
 class PlacesController < ApplicationController
-   before_action :require_user_signed_in, only: [:index,:show, :create, :destroy]
+	before_action :require_user_signed_in, only: [:index,:show, :create, :destroy]
 	before_action :set_place, only: [:show, :edit, :update, :destroy]
 	before_action :set_univers
 	before_action :correct_user
 	before_action :pull_countries, only: [:new, :edit, :index]
 	
 	
-	respond_to :html, :xml, :json
+	respond_to :html, :js, :xml, :json
 
   # GET /places
   # GET /places.json
@@ -17,6 +17,11 @@ class PlacesController < ApplicationController
   # GET /places/1
   # GET /places/1.json
   def show
+	   respond_to do |format|
+		format.html { redirect_to univers_places_url, notice: 'Place was successfully destroyed.' }
+		format.js #show.js.erb  
+      format.json { head :no_content }
+    end
   end
 
 
@@ -24,6 +29,7 @@ class PlacesController < ApplicationController
   # GET /places/new
   def new
 	  @place = @univers.places.build
+	  
 	  
   end
 
@@ -60,7 +66,7 @@ class PlacesController < ApplicationController
   # POST /places.json
   def create
 	  @place = @univers.places.build(place_params)
-	  
+	  @places = @univers.places.all
 
     respond_to do |format|
       if @place.save

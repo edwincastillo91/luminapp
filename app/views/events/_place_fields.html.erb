@@ -1,0 +1,5 @@
+<div class="field" id="place_form">
+<%= collection_select(:event, :place_id, @places,
+	:id, :name, {selected: @places.last},
+	{multiple: false, class: 'select2', id: 'place_field', style:"width: 100%"}) %>
+  </div>

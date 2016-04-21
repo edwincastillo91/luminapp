@@ -1,19 +1,19 @@
-<%= form_for [@univers, @event] do |f| %>
+<%= form_for [@univers, @event], :html => { :class => 'form-horizontal form-model', id: 'new_event_form' }, remote: true do |f| %>
   
 
+<div id="placefield">
+	<%= render 'place_fields'%> 
+</div>
+
+<%= link_to 'New Place', new_univers_place_path,id: 'new_place_link', remote: true%>
 
 
-<div class="field">
-	<%= f.label :place %><br />
-	<%= collection_select(:event, :place_id, @places, :id, :place_city_country, {prompt: 'Where was it?'}, {multiple: false, class: 'select2'}) %>
-  </div>
 
-<div class="field">
-	<%= f.label :day %><br />
-	<%= collection_select(:event, :day_id, @dates, :id, :human_day, {prompt: 'When was it?'}, {multiple: false}) %> 
-  </div>
+<div class="dayfield">
+	<%= render 'day_field'%>
+	</div>
 
-
+<%= link_to 'New Day', new_univers_day_path,id: 'new_day_link', remote: true%>
 
 
 
@@ -24,11 +24,11 @@
 
 
 
-  <div class="form-group">
+<div class="form-group">
     <div class='col-md-offset-2 col-md-10'>
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-univers_stories_path, :class => 'btn btn-default' %>
+      <%= f.submit nil, :class => 'vex-dialog-button-primary vex-dialog-button vex-first' %>
+		
+		<%= link_to 'cancel', '#', :class => 'vex-dialog-button-secondary vex-dialog-button vex-last' %>
     </div>
   </div>
 

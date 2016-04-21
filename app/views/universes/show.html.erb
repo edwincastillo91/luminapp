@@ -42,7 +42,7 @@
 		
 		<% @univers.characters.each do |char| %>
 			<li>
-				<%= link_to char.first_name, univers_character_path(char.univers_id, char.id)%>
+				<%= link_to char.first_name + " " + char.last_name, univers_character_path(char.univers_id, char.id)%>
 			</li>
 		<%end%>
 		

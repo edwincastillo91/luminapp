@@ -1,0 +1,5 @@
+<div class="field" id="day_form">
+<%= collection_select(:event, :day_id, @days,
+	:id, :human_day, {selected: @days.first},
+	{multiple: false, class: "select2", id:"day_field", style:"width: 100%"}) %>
+</div>

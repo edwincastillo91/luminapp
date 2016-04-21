@@ -2,11 +2,10 @@ vex.open({
 	content: '<%= j render("form")%>',
 	afterOpen: function($vexContent) {
 //		$(".select2").select2({
-//			theme: "bootstrap"
-//		}), 
+//			theme: "bootstrap", 
+//			tags: true}), 
 		$('.vex-last').on('click', function(){
 			vex.close();
 		});
 	}
 });
-		

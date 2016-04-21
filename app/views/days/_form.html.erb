@@ -1,11 +1,14 @@
-<%= simple_form_for [@univers, @day] do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for [@univers, @day], :html => { :class => 'form-horizontal form-model', id: 'new_day_form' }, remote: true do |f| %>
 
-  <div class="form-inputs">
-    <%= f.input :date, :start_year=>1900,:end_year=>2070 %>
+  <div class="field">
+	  <%= f.input :date, :start_year=>1700,:end_year=>2100, class: 'select2', id: 'day_field', style:"width: 100%" %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+ <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+		<%= f.submit 'make a day', :class => 'vex-dialog-button-primary vex-dialog-button vex-first' %>
+		
+		<%= link_to 'cancel', '#', :class => 'vex-dialog-button-secondary vex-dialog-button vex-last' %>
+    </div>
   </div>
 <% end %>

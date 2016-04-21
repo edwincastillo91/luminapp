@@ -30,6 +30,7 @@
 //= require isotope
 //= require isotope/jquery.isotope
 //= require vex.combined.min.js
+//= require cocoon
 //= require_tree .
 
 
